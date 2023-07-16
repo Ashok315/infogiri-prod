@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <% include head.ejs %>
+  </head>
+  <body>
+    <% include header.ejs %>
+ 
+   <!-- -----main----- -->
+    <main>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="text-center">
+              <h4><strong>Find any Bank Details</strong></h4>
+              <p class="fw-bold">Welcome to <%= title %></p>
+            </div>
+           <div class="justify-content-center row">
+        <div class="table-responsive mt-3 col-lg-8">
+         <table class="table table-bordered">
+          <tbody>
+           <tr>
+            <th>Select Bank</th>
+            <td>
+              <select name="" id="bank_name" >
+               <option value="">Select Bank</option>
+                 <%for(var count=0; count < banks.length; count++){
+                  %>
+         
+                <option value="<%= banks[count].id%>"><%= banks[count].name%></option>
+           
+               <%}%>
+             </select>
+            </td>
+          </tr>
+          <tr>
+            <th>Select State</th>
+            <td>
+              <select id="bank_state" class="" name="">
+                <option>Select State</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <th>Select City</th>
+            <td>
+              <select id="bank_city" class="" name="">
+                <option>Select City</option>
+              </select>
+            </td>
+        
+          </tr>
+          <tr>
+            <th>Select Branch</th>
+            <td>
+              <select id="bank_branch" class="" name="" >
+                <option>Select Branch</option>
+              </select>
+            </td>
+          </tr>
+         </tbody>
+         </table>
+        </div>
+        </div>
+           
+        <div class="justify-content-center row">
+          <div class="table-responsive mt-4 col-lg-8">
+           <table class="table table-bordered " id="all_detail" style="visibility: hidden;">
+            <tbody>
+             <tr>
+              <th>IFSC CODE</th>
+              <td id="bank_ifsc" class="bank_details"></td>
+            </tr>
+            <tr>
+              <th>Bank Name</th>
+              <td id="bank_name2" class="bank_details"></td>
+            </tr>
+            <tr>
+              <th>MICR Code</th>
+              <td id="bank_micr" class="bank_details">
+              
+              </td>
+          
+            </tr>
+            <tr>
+              <th>Address</th>
+              <td id="bank_address" class="bank_details">
+                
+              </td>
+            </tr>   
+            <tr>
+              <th>Contact</th>
+              <td id="bank_contact" class="bank_details">
+                
+              </td>
+            </tr>
+           </tbody>
+           </table>
+          </div>
+          </div>      
+        
+          </div>
+      </div>
+      </div>
+    </main>
+
+    <% include footer.ejs %>
+    
+  <script src="/javascripts/ifsc.js"></script>
+  </body>
+</html>

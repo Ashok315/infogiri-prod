@@ -1,0 +1,122 @@
+<!-- -----cookie----- -->
+<div id="cookieBox" class="ps-4 py-2 bg-dark mb-3 col-md-6">
+  <div class="title-wrap ps-1">
+      <h5 class="text-warning ">Cookie Consent</h5>
+  </div>
+  <div class="content-wrap "> 
+      <div class="msg-wrap mb-2">
+          <p class="p-0 m-2 text-white">This website uses cookies to enhance your browsing experience and provide personalized recommendations. see our Privacy Policy.</a></p>
+          <div class="d-flex justify-content-center align-items-center">
+           <a href="/privacy_policy" class="text-warning">More Information</a> <button class="btn btn-primary btn-sm ms-3 px-5" onclick="acceptCookieConsent();">Accept</button>
+          </div>       
+      </div>
+  </div>
+</div>
+<!-- -----footer----- -->
+<footer class="align-content-center text-white" id="footer">
+  <div class="container">
+    <div class="row justify-content-center m-auto gx-3 px-0">
+      <div class="col-md-4 col-sm-8 contact_text">
+        <h6 class="mb-3"><strong>Contact Us</strong></h6>
+        <p class="mb-2">
+          <i class="far fa-envelope"></i>ashokpateliya315@gmail.com
+        </p>
+        <p class="mb-0"><i class="fas fa-phone-alt"></i>(+91) 9586964275</p>
+      </div>
+      <div class="col-md-3 col-sm-8 footer-navigation">
+        <h6 class="mb-3">Quick Links</h6>
+        <ul>
+
+          <li><a href="/"> Find IFSC</a></li>
+          <li><a href="/find_city"> Find City from Pincode</a></li>
+          <li><a href="/"> Find MICR</a></li>
+         
+        </ul>
+      </div>
+
+      <div class="col-md-2 col-sm-8 footer-navigation">
+        <h6 class="mb-3">InfoGiri</h6>
+        <ul>
+          <li><a href="/"> Home</a></li>
+          <li><a href="/about_us"> About Us</a></li>
+          <li><a href="/privacy_policy">Privacy Policy</a></li>
+          <li><a href="/terms_conditions"> Terms & Conditions </a></li>
+          <li class="mb-1"><a href="/contact_us">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3 col-sm-8 footer_right">
+        <a class="navbar-brand" href="/"
+          ><img src="/images/logo_white.png" alt="logo"
+        /></a>
+        <div class="col-md-10 col-sm-12 offset-2 icons mt-1">
+          <div class="icons-center">
+            <a href="https://www.facebook.com/profile.php?id=100094274125374&mibextid=ZbWKwL" target="_blank"
+              ><i class="fab fa-facebook-square"></i
+            ></a> 
+            <a href="https://www.instagram.com/p/CuU2BKjvnNH/?igshid=MzRlODBiNWFlZA==" target="_blank"
+              ><i class="fab fa-instagram-square"></i
+            ></a>
+        
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <p class="footnote text-center mb-0">
+    <small>Copyright &copy; 2023 All Right Reserved | infogiri.com</small>
+  </p>
+</footer>
+<script>
+  $(window).on('load', function () {
+    $("#preloader").css('display','none');
+    });
+
+    // Create cookie
+function setCookie(cname, cvalue, exdays) {
+    const d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    let expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+// Delete cookie
+function deleteCookie(cname) {
+    const d = new Date();
+    d.setTime(d.getTime() + (24*60*60*1000));
+    let expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=;" + expires + ";path=/";
+}
+
+// Read cookie
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+// Set cookie consent
+function acceptCookieConsent(){
+    deleteCookie('user_cookie_consent');
+    setCookie('user_cookie_consent', 1, 30);
+    document.getElementById("cookieBox").style.display = "none";
+}
+
+let cookie_consent = getCookie("user_cookie_consent");
+if(cookie_consent != ""){
+    document.getElementById("cookieBox").style.display = "none";
+}else{
+    document.getElementById("cookieBox").style.display = "block";
+}
+
+</script>

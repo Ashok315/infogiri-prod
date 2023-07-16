@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=title %></title>
+    <% include head.ejs %>
+  </head>
+  <body>
+    <% include header.ejs %>
+
+    <section class="contact_us mrg-top">
+        <div class="container mt-5 px-0">
+          <div class="row gx-0">
+         <div class="col-lg-5 col-md-5 col-sm-10 col-10 m-auto">  
+            <h3>Contact Us</h3> 
+                <p class="text-left">
+                    If you have any questions, feedback, or concerns regarding Infogiri, the platform that provides comprehensive services such as bank IFSC code finder, pincode lookup, and more, we are here to assist you. We value your input and strive to provide excellent customer support to ensure a smooth and satisfying user experience.                 
+                </p>
+                <p>
+                    mail us at ashokpateliya315@gmail.com or fill the form
+                </p>
+         </div>
+         
+            <div class="col-lg-5 col-md-5 col-sm-10 col-10 m-auto">
+
+                
+              <form class="mt-4" id="contact_form" method="POST" action="/contact_us">            
+                <div class="form-group mt-3 d-flex">
+                  <i class="fas fa-user"></i>
+                  <input  
+                    type="text"
+                    class="form-control"
+                    id="fullname"
+                    name="fullname"
+                    placeholder="Full Name"
+                  />
+              
+                </div>
+                  
+                <div class="form-group mt-3">
+                 
+                  <i class="fas fa-phone-alt"></i>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="mobile"
+                    name="mobile"
+                    placeholder="Mobile"
+                    maxlength="10"
+                  />
+                </div>
+                
+                <div class="form-group mt-3">
+                  <i class="fas fa-envelope"></i>
+              
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="Email"
+                  />
+                </div>
+               
+              
+                 <textarea name="message" id="message" class="form-control mt-3"  rows="3" placeholder="Message"></textarea>
+
+                 <div class="captcha_label text-light mt-1 ">Resolve the simple captcha below:</div>
+                              <div class="field-item field-item-s2 animated captcha_code fadeInUp" data-animate="fadeInUp" data-delay=".3">
+                                 <h6>
+                                  <i id="captcha_text"></i>
+                                  <input class="input-borderr form-control" id="captcha_result" name="captcha" type="number">
+                                 </h6>
+                                
+                                 <p id="error_captcha"></p>
+                              </div>
+
+                  <div class="text-center mt-3">
+                   <button type="submit" id="contact_submit" class="btn btn-primary">Submit</button>
+                  </div>
+
+              
+              </form>
+              
+              
+            </div>
+           
+          </div>
+        </div>
+      </section>
+
+    <% include footer.ejs %>
+<script>
+  $(document).ready(function(){
+    gen_captcha();
+
+    jQuery.validator.addMethod("noSpace", function(value, element) {
+        return value == '' || value.trim().length != 0;
+    }, "No space please and don't leave it empty");
+    
+    $('#contact_form').validate({
+    rules:{
+       "fullname":{
+                required: true,
+                maxlength: 50,
+                noSpace: true,
+       },
+       "mobile": {
+                required: true,
+                digits: true,
+                minlength: 10,
+                maxlength: 10,
+                noSpace: true
+            },
+          "email": {
+                required: true,
+                email: true
+            },  
+            "message":{
+                required: true,
+                maxlength: 100,
+                noSpace: true,
+       },   
+    },
+    messages: {
+      noSpace: "No space please and don't leave it empty"
+   }
+
+  });
+    
+});
+
+  var sum;
+
+function gen_captcha() {
+    var rand_num1 = Math.round(10 * Math.random());
+    var rand_num2 = Math.round(10 * Math.random());
+    var str = `${rand_num1} + ${rand_num2}  = `;
+    $('#captcha_text').html(str);
+    sum = rand_num1 + rand_num2;
+};
+
+$('#contact_submit').click(function(e) {
+         $('#error_captcha').html('');
+         var captcha_val = $('#captcha_result').val();
+         if (captcha_val == sum &&  $('#contact_form').valid()) {
+          $('#error_captcha').html('');
+          $('#contact_form').submit();
+            return true;
+          
+         } else {
+            
+          $('#error_captcha').html('Invalid captcha');
+            e.preventDefault();
+            return false;
+         }
+      })
+
+</script>
+  </body>
+</html>
+
+
