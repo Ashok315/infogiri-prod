@@ -1,3 +1,4 @@
+require('dotenv').config();
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -8,7 +9,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
-var port=4000;
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -29,9 +30,6 @@ app.use(function(req, res, next) {
 });
 
 
-app.listen(port,(req,res)=>{
-  console.log(`Server is running on port ${port}`)
-});
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
