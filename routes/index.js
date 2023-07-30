@@ -7,7 +7,7 @@ const nodemailer=require('nodemailer');
 router.get('/', function(req, res) {
   var sql="SELECT * FROM available_bank_names";
   database.query(sql,(err,results)=>{
-    res.render('index', { title: 'Infogiri',banks:results });
+    res.render('index', {banks:results });
     
    
   })
