@@ -107,16 +107,13 @@ p{
   
 }
 
-.navbar-brand {
-  max-width: 150px;
+
+
+.brand img {
+width: 140px;
   height: auto;
 }
-
-.navbar-brand img {
-  max-width: 140px;
-  height: auto;
-}
-
+  
 .navbar-toggler {
   font-size: 0.85rem;
   padding: 0.3rem 0.7rem;
@@ -181,13 +178,9 @@ footer {
   padding: 1.7rem 0 0.7rem 0;
 }
 
-footer .navbar-brand {
-  max-width: 185px;
-  height: auto;
-  opacity: 0.9;
-}
 
-footer .navbar-brand img {
+
+footer .brand img {
   max-width: 180px;
   height: auto;
   margin: 0 0 0.5rem 0.5rem;
