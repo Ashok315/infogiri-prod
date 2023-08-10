@@ -110,10 +110,10 @@ p{
 
 
 .brand img {
-width: 140px;
+max-width: 140px;
   height: auto;
 }
-  
+
 .navbar-toggler {
   font-size: 0.85rem;
   padding: 0.3rem 0.7rem;
