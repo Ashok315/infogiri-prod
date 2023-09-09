@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+    <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" /> -->
     <title>Bank IFSC Codes | All banks of India</title>
     <% include head.ejs %>
     <meta name="title" content="Bank IFSC Codes | All banks of India">
@@ -127,20 +127,5 @@
     <% include footer.ejs %>
     
   <script src="/javascripts/ifsc.js"></script>
-  <script>
-    $(document).ready(function(){
-     
-        $.ajax({
-            type: "GET",
-            dataType: "json",
-            url: 'http://kosh24.com/api/demo-url',
-            success: function (data) {
-                console.log(data);
-                alert(data);
-            }
-        });
-   
-    })
-  </script>
   </body>
 </html>
