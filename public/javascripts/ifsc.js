@@ -28,7 +28,7 @@ $(document).ready(function(){
         }
       })
     }
-    
+    //find city
     function find_city(){
       var bank_name = $("#bank_name :selected").text();
       var bank_state = $("#bank_state :selected").text();
